@@ -1,8 +1,8 @@
-class products{
-  const products({required this.id,required this.title,required this.images,required this.price});
+class Product{
+  const Product({required this.id,required this.title,required this.image,required this.price});
 
  final String id;
  final String title;
- final String images;
+ final String image;
  final int price;
 }
