@@ -20,8 +20,8 @@ const List<Product> allProducts=[
 // final reducedproductpriceProvider=Provider((ref){
 //   return allProducts.where((p)=>p.price<50);
 // });
-//generated providers
 
+//generated providers
 @riverpod
 List<Product> products(ref){
   return allProducts;

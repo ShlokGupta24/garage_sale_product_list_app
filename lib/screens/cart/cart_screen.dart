@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:garage_sale_product_list_app/providers/cart_provider.dart';
 import 'package:garage_sale_product_list_app/providers/products_provider.dart';
 //For state changes and using providers also, we need ConsumerStateful Widget for it.
 class CartScreen extends ConsumerStatefulWidget {
@@ -13,7 +14,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   bool showCoupon=true;
   @override
   Widget build(BuildContext context) {
-    final cartProducts=ref.watch(reducedproductpriceProvider);
+    final cartProducts=ref.watch(cartNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
