@@ -1,15 +1,15 @@
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:garage_sale_product_list_app/model/product.dart';
-
-class CartNotifier extends Notifier<Set<Product>>{
+part 'cart_provider.g.dart';
+@riverpod
+class CartNotifier extends _$CartNotifier{
   //initial value
-  @override
-  Set<Product> build(){
+   @override
+   Set<Product> build(){
     return const{
-   Product(id: '4', title: 'Red Backpack', image: 'assets/backpack.png', price: 14)
-    };
-  }
+  //  Product(id: '4', title: 'Red Backpack', image: 'assets/backpack.png', price: 14)
+     };
+   }
   //methods to update state
 void addProduct(Product product){
     if(!state.contains(product)){
@@ -23,6 +23,3 @@ void removeProduct(Product product){
 }
 }
 
-final cartNotifierProvider = NotifierProvider<CartNotifier, Set<Product>>((){
-  return CartNotifier();
-});
