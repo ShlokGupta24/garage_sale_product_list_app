@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:garage_sale_product_list_app/model/product.dart';
 part 'cart_provider.g.dart';
@@ -23,3 +24,14 @@ void removeProduct(Product product){
 }
 }
 
+@riverpod
+int cartTotal(Ref ref) {
+  final cartProducts = ref.watch(cartNotifierProvider);
+
+  int total=0;
+
+  for(Product product in cartProducts){
+    total+=product.price;
+  }
+  return total;
+}
