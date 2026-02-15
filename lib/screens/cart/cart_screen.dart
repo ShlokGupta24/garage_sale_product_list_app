@@ -12,14 +12,41 @@ class CartScreen extends ConsumerStatefulWidget {
 
 class _CartScreenState extends ConsumerState<CartScreen> {
   bool showCoupon=true;
+
   @override
   Widget build(BuildContext context) {
     final cartProducts=ref.watch(cartNotifierProvider);
     final total=ref.watch(cartTotalProvider);
+    final numberofItems=ref.watch(cartNotifierProvider).length;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Your Cart'),
+        actions: [
+          Stack(
+            clipBehavior: Clip.none,
+              children: [
+                Hero(tag: 'cart-hero', child: Icon(Icons.shopping_cart_outlined,)),
+                Positioned(
+                  top: -8,
+                  left: -6,
+                  child: Container(
+                    width: 18,
+                    height: 18,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blueAccent,
+                    ),
+                    child: Text(numberofItems.toString(),style: TextStyle(
+                      color: Colors.white,
+                    ),),
+                  ),
+                )
+              ]
+          ),
+          SizedBox(width: 10,)
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(30),
